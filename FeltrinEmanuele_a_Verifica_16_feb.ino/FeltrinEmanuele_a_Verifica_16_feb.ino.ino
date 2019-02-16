@@ -17,12 +17,34 @@ void setup() {
   pinMode (verde,OUTPUT);
 
   Serial.begin(9600);
-  
+
+  ChiediDURATA();
 
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
 
+ digitalWrite(rosso,HIGH);
+ delay(DURATA);
+ digitalWrite(rosso,LOW);
+ digitalWrite(giallo,HIGH);
+ delay(2*DURATA);
+ digitalWrite(giallo,LOW);
+ digitalWrite(bianco,HIGH);
+ delay(DURATA);
+ digitalWrite(bianco,LOW);
+ digitalWrite(verde,HIGH);
+ delay(3*DURATA);
+ digitalWrite(verde,LOW);
+
 
 }
+void ChiediDURATA()
+{
+  Serial.println("Quanto deve stare acceso il led rosso?(ms)");
+  while(Serial.available()==0) {};
+  String inp =Serial.readString();
+  DURATA = inp.toInt();
+}
+
