@@ -42,9 +42,10 @@ void loop() {
 }
 void ChiediDURATA()
 {
-  Serial.println("Quanto deve stare acceso il led rosso?(ms)");
+  Serial.println("Quanto deve stare acceso il led rosso?(Secondi)");
   while(Serial.available()==0) {};
   String inp =Serial.readString();
-  DURATA = inp.toInt();
+  int DURATAappoggio = inp.toInt();
+  DURATA = DURATAappoggio*1000;
 }
 
